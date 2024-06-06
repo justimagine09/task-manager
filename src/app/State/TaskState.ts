@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, useState } from "react"
 import { ITask, ITaskState } from "../Interfaces/ITask";
-import { EStatus } from "../Components/enum/EStatus";
+import { EStatus } from "../enum/EStatus";
 
 export const TASK_STATE_KEY: string = 'task-list';
 const TRACK_ID: string = 'task-list-id';

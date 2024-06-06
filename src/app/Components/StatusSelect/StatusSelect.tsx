@@ -4,8 +4,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { EStatus } from '../enum/EStatus';
 import { useState } from 'react';
+import { EStatus } from '@src/app/enum/EStatus';
 
 export default function StatusSelect({onSelectChanged}: {onSelectChanged: (data: EStatus) => EStatus}) {
   const [status, setStatus]: [EStatus, React.Dispatch<any>] = useState(EStatus.ALL);

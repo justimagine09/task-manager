@@ -1,8 +1,8 @@
-import { afterEach, expect, it, test } from 'vitest'
-import { render, fireEvent, cleanup, within } from '@testing-library/react'
-import Home from '../page'
-import { TASK_STATE_KEY } from '../State/TaskState';
-import { EStatus } from '../enum/EStatus';
+import { afterEach, expect, it } from 'vitest'
+import { render, fireEvent, cleanup } from '@testing-library/react'
+import Home from '@src/app/page'
+import { TASK_STATE_KEY } from '@src/app/State/TaskState';
+import { EStatus } from '@src/app/enum/EStatus';
 
 afterEach(() => {
   cleanup();

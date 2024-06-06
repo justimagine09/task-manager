@@ -1,4 +1,4 @@
-import { EStatus } from "../Components/enum/EStatus";
+import { EStatus } from "../enum/EStatus";
 
 export interface ITask {
     id?: number;

@@ -7,7 +7,7 @@ import { TaskState } from './State/TaskState';
 import { Dispatch, useState } from 'react';
 import AddTaskDialog from './Components/AddTaskDialog/AddTaskDialog';
 import { ITask } from './Interfaces/ITask';
-import { EStatus } from './Components/enum/EStatus';
+import { EStatus } from './enum/EStatus';
 
 export default function Home() {
   const taskState = TaskState();

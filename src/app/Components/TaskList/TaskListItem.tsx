@@ -1,10 +1,10 @@
 import { Avatar, Box, IconButton, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip } from "@mui/material";
 import TaskIcon from '@mui/icons-material/Task';
-import { ITask } from "../../Interfaces/ITask";
+import { ITask } from "@src/app/Interfaces/ITask";
 import { useState } from "react";
 import { Check, Delete, Edit, MoreVert } from "@mui/icons-material";
-import { EStatus } from "../enum/EStatus";
 import TaskListStyles from './TaskList.module.scss';
+import { EStatus } from "@src/app/enum/EStatus";
 
 interface IProps {
     data: ITask;
@@ -13,7 +13,7 @@ interface IProps {
     onDelete: (data: ITask) => void;
 }
 
-export default function TaskListItem({ data, onUpdate, onEdit, onDelete}: IProps) {
+export default function TaskListItem({ data, onUpdate, onEdit, onDelete }: IProps) {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
@@ -45,7 +45,7 @@ export default function TaskListItem({ data, onUpdate, onEdit, onDelete}: IProps
         <ListItem>
             <ListItemAvatar sx={{ styles: "align-self: flex-start" }}>
                 <Tooltip title={data.status === EStatus.COMPLETED ? 'Completed' : 'Active'}>
-                    <Avatar 
+                    <Avatar
                         className={data.status === EStatus.COMPLETED ? TaskListStyles.complete : ''}>
                         <TaskIcon />
                     </Avatar>
@@ -56,8 +56,6 @@ export default function TaskListItem({ data, onUpdate, onEdit, onDelete}: IProps
             <Box display='flex' gap={1}>
                 <IconButton edge="end"
                     data-testid="task-item-menu"
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}>
@@ -74,7 +72,7 @@ export default function TaskListItem({ data, onUpdate, onEdit, onDelete}: IProps
                 >
                     <MenuItem data-testid='task-item-edit' onClick={onEditClicked}>
                         <ListItemIcon>
-                            <Edit/>
+                            <Edit />
                         </ListItemIcon>
                         <ListItemText>Edit</ListItemText>
                     </MenuItem>

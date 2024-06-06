@@ -4,9 +4,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TextField } from '@mui/material';
-import { ITask } from '../../Interfaces/ITask';
+import { ITask } from '@src/app/Interfaces/ITask';
 import { useEffect, useState } from 'react';
-import { EStatus } from '../enum/EStatus';
+import { EStatus } from '@src/app/enum/EStatus';
 
 function defaultFormValue () {
   return {title: '', description: '', status: EStatus.ACTIVE};
