@@ -4,7 +4,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TextField } from '@mui/material';
-import { ITask } from '@src/app/Interfaces/ITask';
+import { ITask } from '../../Interfaces/ITask';
 import { useEffect, useState } from 'react';
 import { EStatus } from '../enum/EStatus';
 
@@ -70,12 +70,14 @@ export default function AddTaskDialog({task, open, onClose}: any) {
         <DialogTitle>
          Add Task
         </DialogTitle>
+
         <DialogContent>
           <TextField
+              inputProps={{'data-testid':"add-task-dialog-title"}}
               autoFocus
               required
               margin="dense"
-              id="name"
+              id="title"
               name="Title"
               label="Title"
               fullWidth
@@ -85,9 +87,9 @@ export default function AddTaskDialog({task, open, onClose}: any) {
               onChange={(value) => dataChanged('title', value.target.value)}
               variant="standard"
             />
-
           
             <TextField
+              inputProps={{'data-testid':"add-task-dialog-description"}}
               autoFocus
               required
               margin="dense"
@@ -106,7 +108,7 @@ export default function AddTaskDialog({task, open, onClose}: any) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>CLose</Button>
-          <Button onClick={onSubmit}>
+          <Button data-testid="add-task-dialog-save" onClick={onSubmit}>
             Save
           </Button>
         </DialogActions>

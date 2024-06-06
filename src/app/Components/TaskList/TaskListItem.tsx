@@ -1,6 +1,6 @@
 import { Avatar, Box, IconButton, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip } from "@mui/material";
 import TaskIcon from '@mui/icons-material/Task';
-import { ITask } from "@src/app/Interfaces/ITask";
+import { ITask } from "../../Interfaces/ITask";
 import { useState } from "react";
 import { Check, Delete, Edit, MoreVert } from "@mui/icons-material";
 import { EStatus } from "../enum/EStatus";
@@ -71,20 +71,20 @@ export default function TaskListItem({ data, onUpdate, onEdit, onDelete}: IProps
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem onClick={onEditClicked}>
+                    <MenuItem data-testid='task-item-edit' onClick={onEditClicked}>
                         <ListItemIcon>
                             <Edit/>
                         </ListItemIcon>
                         <ListItemText>Edit</ListItemText>
                     </MenuItem>
 
-                    <MenuItem onClick={onCompleteClicked}>
+                    <MenuItem data-testid='task-item-complete' onClick={onCompleteClicked}>
                         <ListItemIcon>
                             <Check fontSize="small" />
                         </ListItemIcon>
                         <ListItemText>{data.status === EStatus.COMPLETED ? 'Re-open' : 'Complete'}</ListItemText>
                     </MenuItem>
-                    <MenuItem onClick={onDeleteClicked}>
+                    <MenuItem data-testid='task-item-delete' onClick={onDeleteClicked}>
                         <ListItemIcon>
                             <Delete fontSize="small" />
                         </ListItemIcon>

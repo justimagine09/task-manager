@@ -1,9 +1,9 @@
 "use client";
-import { Dispatch, useEffect, useState } from "react"
+import { Dispatch, useState } from "react"
 import { ITask, ITaskState } from "../Interfaces/ITask";
 import { EStatus } from "../Components/enum/EStatus";
 
-const TASK_STATE_KEY: string = 'task-list';
+export const TASK_STATE_KEY: string = 'task-list';
 const TRACK_ID: string = 'task-list-id';
 
 function onEdit(task: ITask, tasks: ITask[], setTask: Dispatch<any>) {

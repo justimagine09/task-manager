@@ -1,7 +1,7 @@
 import * as React from 'react';
 import List from '@mui/material/List';
 import TaskListItem from './TaskListItem';
-import { ITask, ITaskState } from '@src/app/Interfaces/ITask';
+import { ITask, ITaskState } from '../../Interfaces/ITask';
 
 export default function TaskList({state, onEdit}: {state: ITaskState, onEdit: (data: ITask) => void}) {
     let [data, setData]: [data: ITask[], React.Dispatch<any>] = React.useState([]);

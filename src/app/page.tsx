@@ -30,10 +30,12 @@ export default function Home() {
   const onEditTask = (task: ITask) => {
     setForm(task);
     setOpen(true);
+    console.log(task);
   };
 
   const onSelectChanged = (data: EStatus) => {
     taskState.filter(data);
+    return data;
   }
 
   return (
@@ -50,7 +52,7 @@ export default function Home() {
 
       <Container>
         <Box pt={4} gap={2} display="flex">
-          <Button variant='contained' onClick={handleClickOpen}>
+          <Button data-testid="add-tasks" variant='contained' onClick={handleClickOpen}>
             <AddIcon />
           </Button>
           <StatusSelect onSelectChanged={onSelectChanged} />
