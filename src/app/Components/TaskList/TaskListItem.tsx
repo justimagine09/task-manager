@@ -2,8 +2,9 @@ import { Avatar, Box, IconButton, ListItem, ListItemAvatar, ListItemText } from 
 import TaskIcon from '@mui/icons-material/Task';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { ITask } from "@src/app/Interfaces/ITask";
 
-export default function TaskListItem({data}: any) {
+export default function TaskListItem({data}: {data: ITask}) {
     return (
         <ListItem>
             <ListItemAvatar sx={{ styles: "align-self: flex-start" }}>

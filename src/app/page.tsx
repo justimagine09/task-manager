@@ -1,10 +1,14 @@
+"use client";
 import { AppBar, Box, Button, Container, Toolbar, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import StatusSelect from './Components/StatusSelect/StatusSelect';
 import TaskList from './Components/TaskList/TaskList';
-
+import { TaskState } from './State/TaskState';
 
 export default function Home() {
+  let taskState;
+  taskState = TaskState();
+  
   return (
     <main>
       <AppBar position="static">
@@ -26,7 +30,7 @@ export default function Home() {
         </Box>
 
         <Box pt={4}>
-          <TaskList />
+          <TaskList state={taskState}/>
         </Box>
       </Container>
     </main>
