@@ -22,7 +22,8 @@ function onEdit(task: ITask, tasks: ITask[], setTask: Dispatch<any>) {
 }
 
 function onDelete (task: ITask, tasks: ITask[], setTask: Dispatch<any>) {
-    setTask(tasks.filter((item) => item.id !== task.id));
+    tasks = tasks.filter((item) => item.id !== task.id);
+    setTask(tasks);
     localStorage.setItem(TASK_STATE_KEY, JSON.stringify(tasks));
 }
 

@@ -30,7 +30,6 @@ export default function Home() {
   const onEditTask = (task: ITask) => {
     setForm(task);
     setOpen(true);
-    console.log(task);
   };
 
   const onSelectChanged = (data: EStatus) => {

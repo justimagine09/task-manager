@@ -55,6 +55,7 @@ export default function TaskListItem({ data, onUpdate, onEdit, onDelete}: IProps
 
             <Box display='flex' gap={1}>
                 <IconButton edge="end"
+                    data-testid="task-item-menu"
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"

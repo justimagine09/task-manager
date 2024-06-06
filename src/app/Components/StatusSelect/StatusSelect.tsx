@@ -16,7 +16,7 @@ export default function StatusSelect({onSelectChanged}: {onSelectChanged: (data:
   };
 
   return (
-    <Box sx={{ minWidth: 150 }}>
+    <Box sx={{ minWidth: 150 }} data-testid='status-select'>
       <FormControl fullWidth>
         <InputLabel>Status</InputLabel>
         <Select
