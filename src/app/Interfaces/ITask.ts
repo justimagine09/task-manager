@@ -1,10 +1,15 @@
+import { EStatus } from "../Components/enum/EStatus";
+
 export interface ITask {
     id?: number;
     title: string,
     description: string;
+    status: EStatus;
 }
 
 export interface ITaskState {
     data: ITask[];
-    addTask: Function;
+    edit: (task: ITask) => void;
+    delete: (task: ITask) => void;
+    filter: (filter: EStatus) => void;
 }

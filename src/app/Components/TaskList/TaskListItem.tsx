@@ -1,28 +1,97 @@
-import { Avatar, Box, IconButton, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
+import { Avatar, Box, IconButton, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip } from "@mui/material";
 import TaskIcon from '@mui/icons-material/Task';
-import CheckIcon from '@mui/icons-material/Check';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { ITask } from "@src/app/Interfaces/ITask";
+import { useState } from "react";
+import { Check, Delete, Edit, MoreVert } from "@mui/icons-material";
+import { EStatus } from "../enum/EStatus";
+import TaskListStyles from './TaskList.module.scss';
 
-export default function TaskListItem({data}: {data: ITask}) {
+interface IProps {
+    data: ITask;
+    onUpdate: (data: ITask) => void;
+    onEdit: (data: ITask) => void;
+    onDelete: (data: ITask) => void;
+}
+
+export default function TaskListItem({ data, onUpdate, onEdit, onDelete}: IProps) {
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const onCompleteClicked = () => {
+        data.status = data.status === EStatus.COMPLETED ? EStatus.ACTIVE : EStatus.COMPLETED;
+        onUpdate(data);
+        handleClose();
+    }
+
+    const onEditClicked = () => {
+        onEdit(data);
+        handleClose();
+    }
+
+    const onDeleteClicked = () => {
+        onDelete(data);
+        handleClose();
+    }
+
     return (
         <ListItem>
             <ListItemAvatar sx={{ styles: "align-self: flex-start" }}>
-                <Avatar>
-                    <TaskIcon />
-                </Avatar>
+                <Tooltip title={data.status === EStatus.COMPLETED ? 'Completed' : 'Active'}>
+                    <Avatar 
+                        className={data.status === EStatus.COMPLETED ? TaskListStyles.complete : ''}>
+                        <TaskIcon />
+                    </Avatar>
+                </Tooltip>
             </ListItemAvatar>
             <ListItemText primary={data.title} secondary={data.description} />
 
             <Box display='flex' gap={1}>
-                <IconButton edge="end">
-                    <CheckIcon />
+                <IconButton edge="end"
+                    id="basic-button"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}>
+                    <MoreVert />
                 </IconButton>
+                <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                    }}
+                >
+                    <MenuItem onClick={onEditClicked}>
+                        <ListItemIcon>
+                            <Edit/>
+                        </ListItemIcon>
+                        <ListItemText>Edit</ListItemText>
+                    </MenuItem>
 
-                <IconButton edge="end">
-                    <DeleteIcon />
-                </IconButton>
+                    <MenuItem onClick={onCompleteClicked}>
+                        <ListItemIcon>
+                            <Check fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText>{data.status === EStatus.COMPLETED ? 'Re-open' : 'Complete'}</ListItemText>
+                    </MenuItem>
+                    <MenuItem onClick={onDeleteClicked}>
+                        <ListItemIcon>
+                            <Delete fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText>Delete</ListItemText>
+                    </MenuItem>
+                </Menu>
             </Box>
-        </ListItem>
+        </ListItem >
     )
 }
